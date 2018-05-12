@@ -1,0 +1,6 @@
+harry          Harry Potter
+ron            Ron Weasley
+hermione       Hermione Granger
+charity        Charity Burbage
+armando        Armando Dippet
+albus          Albus Dumbledore
