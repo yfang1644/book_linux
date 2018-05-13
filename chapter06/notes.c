@@ -7,7 +7,7 @@
 int main(int argc, char *argv [])
 {
     int notes [] = {        /* 音阶频率表 */
-        131, 147, 165 , 175 , 196 , 220 , 247 , 262
+        131, 147, 165, 175, 196, 220, 247, 262
     };
     int i, cnt;
     unsigned char hi, lo;

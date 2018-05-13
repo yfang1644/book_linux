@@ -44,7 +44,7 @@ struct file_operations fops = {
     write: sleepy_write
 };
 
-int init_module()
+int init_module(void)
 {
     int major;
     major = register_chrdev(MAJOR_NUM, DEVICE_NAME, &fops);
@@ -55,7 +55,7 @@ int init_module()
         return -1;
 }
 
-void cleanup_module()
+void cleanup_module(void)
 {
     unregister_chrdev(MAJOR_NUM, DEVICE_NAME);
 }

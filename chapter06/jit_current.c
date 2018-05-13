@@ -6,7 +6,7 @@
 
 #include <linux/fs.h>
 #include <linux/proc_fs.h>
-#include <asm/uaccess.h>
+#include <linux/uaccess.h>
 
 static int opened = 0;   /* 每次打开只读一次 */
 int currenttime_open(struct inode *inode, struct file *filp)
@@ -33,7 +33,7 @@ ssize_t currenttime_read(struct file *file,
     tv2 = current_kernel_time();
 
     /* print */
-    len = sprintf(buffer, "0x%08 lx %10i.%06i\n"
+    len = sprintf(buffer, "0x%08lx %10i.%06i\n"
                   "%22i.%09i\n",
                   j1 ,
                   (int)tv1.tv_sec, (int)tv1.tv_usec,
@@ -48,13 +48,13 @@ struct file_operations fops = {
     read: currenttime_read,
 };
 
-int init_module()
+int init_module(void)
 {
     proc_create("currenttime", 0666, NULL, &fops);
     return 0;
 }
 
-void cleanup_module ()
+void cleanup_module(void)
 {
     remove_proc_entry("currenttime", NULL);
 }

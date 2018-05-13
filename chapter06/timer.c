@@ -9,7 +9,7 @@
 #include <linux/cdev.h>
 #include <linux/slab.h>
 #include <linux/ioport.h>       /* inb()、outb() 函数 */
-#include <asm/uaccess.h> 	    /* 内核/用户空间存储器复制 */
+#include <linux/uaccess.h> 	    /* 内核/用户空间存储器复制 */
 
 #include "timer.h"
 
@@ -27,7 +27,7 @@ int timer_open(struct inode *inode,
         printk("MALLOC\n");
     }
     i8254 = (struct dtimer *)filp->private_data;
-    i8254->port = MINOR(dev) + 0x40;
+    i8254->port = MINOR(dev) + 0x40;   /* 8254端口基地址 0x40 */
 
     return 0;
 }
@@ -57,8 +57,9 @@ static ssize_t timer_write(struct file *filp,
     int i;
 
     len = count;
-    if (count > 2)
+    if (count > 2) {
         count = 2;
+    }
 	copy_from_user(val, &buf[len-count], count);
 
     i8254 = (struct dtimer *)filp->private_data;
@@ -153,7 +154,8 @@ long timer_ioctl(struct file *filp,
     oldstatus = inb(port);              /* 读控制寄存器 */
 
     switch(cmd) {
-    case TIMER_IOCRESET:     /* 关闭扬声器开关 */
+    case TIMER_IOCRESET:     /* 复位 */
+    case TIMER_SPEAKEROFF:   /* 关闭扬声器开关 */
         outb(0x0, 0x61);
         ret = 0;
         break;
