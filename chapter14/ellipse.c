@@ -20,5 +20,6 @@ int ellipse(int x0, int y0, int a, int b, int color)
         drawpixel(x0 + x, y0 - y, color);
         drawpixel(x0 - x, y0 - y, color);
     }
+
     return 0;
 }

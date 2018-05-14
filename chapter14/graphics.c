@@ -9,6 +9,8 @@ static struct fb_fix_screeninfo finfo;
 static struct fb_var_screeninfo vinfo;
 static unsigned char *fbmem;
 
+/* 在 (x, y) 处画一个颜色为color 的点.
+   本程序只适用于RGBA 32位 Frame buffer 格式. */
 int drawpixel(int x, int y, int color)
 {
     unsigned int ptr;
@@ -18,9 +20,11 @@ int drawpixel(int x, int y, int color)
         return -1;
     ptr = y * finfo.line_length + x * 4;
     *(unsigned int *)(fbmem + ptr) = color;
+
     return 0;
 }
 
+/* 初始化 Frame Buffer，获得缓冲区首地址 fbmem */
 int fb_init(char *dev)
 {
     int fd;

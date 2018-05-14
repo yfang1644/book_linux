@@ -12,4 +12,4 @@ int ellipse(int x0, int y0, int a, int b, int color);
 int rectangle(int x0, int y0, int x1, int y1, int color);
 int fillrect(int x0, int y0, int x1, int y1, int color);
 
-#endif
+#endif    /* _GRAPHICS_H */
