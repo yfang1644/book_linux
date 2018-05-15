@@ -1,5 +1,5 @@
-CC 		= gcc
-SRC 	= graphics.c line.c ellipse.c rectangle.c
+CC      = arm-linux-gcc
+SRC     = graphics.c line.c ellipse.c rectangle.c
 
 LIBNAME = graphics
 VERSION = 0

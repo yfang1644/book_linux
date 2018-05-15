@@ -1,6 +1,6 @@
 # Makefile (!not makefile)
 ifneq ($(KERNELRELEASE),)
-MODULE_NAME := procfs
+MODULE_NAME := example
 #$(MODULE_NAME)-y := example.o
 obj-m := $(MODULE_NAME).o
 else

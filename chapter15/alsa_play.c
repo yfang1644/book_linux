@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
 
     while (1) {
         for(i = 0; i < 4096; i += 2) {
-            buffer[i + 0] = 2000*sin(2*M_PI*ptr*500/fs);
-            buffer[i + 1] = 2000*sin(2*M_PI*ptr*800/fs);
+            buffer[i + 0] = 20000*sin(2*M_PI*ptr*500/fs);  /* 500Hz */
+            buffer[i + 1] = 20000*sin(2*M_PI*ptr*800/fs);  /* 800Hz */
             ptr++;
         }
         err = snd_pcm_wait(handle, 1000);

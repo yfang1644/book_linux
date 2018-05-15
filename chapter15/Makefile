@@ -1,4 +1,4 @@
-CC  	= arm-linux-gcc
+CC    = arm-linux-gcc
 
 all: alsa_play alsa_record
 

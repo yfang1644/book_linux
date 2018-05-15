@@ -33,8 +33,8 @@ int led_open (struct inode *inode, struct file *filp)
 
     if(minor_dev == 1) {
         gpio->port= ioremap(GPIO1, 4096);
-        gpio->ctrl[AD12]  = 0x37;
-        gpio->ctrl[AD13]  = 0x37;
+        gpio->ctrl[AD12]  = 0x37;       /* GPIO1[12] */
+        gpio->ctrl[AD13]  = 0x37;       /* GPIO1[13] */
   //      val = 0xFFFFCFFF;
   //      gpio->port[OE] = val;
     } else if(minor_dev == 2) {
