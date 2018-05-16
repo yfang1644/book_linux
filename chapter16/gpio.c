@@ -127,7 +127,7 @@ int init_module(void)
     } else {
         printk("Module register failed.\n");
     }
-	return val;
+    return val;
 }
 
 void cleanup_module(void)
